@@ -14,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html {
-  font-family: 'GandhiSansregular', sans-serif;
+  font-family: 'GandhiSansRegular', sans-serif;
   line-height: 1.15; 
   -webkit-text-size-adjust: 100%; 
 }
