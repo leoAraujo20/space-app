@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import SideBar from "./components/SideBar/SideBar";
 import Banner from "./components/Banner";
 import bannerImg from "../src/assets/banner.png";
+import Gallery from "./components/Gallery";
 
 const BackgroundGradient = styled.div`
   background: linear-gradient(
@@ -16,16 +17,40 @@ const BackgroundGradient = styled.div`
   min-height: 100vh;
 `;
 
+const AppContainer = styled.div`
+  width: 1440px;
+  margin: 0 auto;
+  max-width: 100%;
+`;
+
+const MainContent = styled.main`
+  display: flex;
+  gap: 24px;
+`;
+
+const GalleryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`
+
 function App() {
   return (
     <BackgroundGradient>
       <GlobalStyles />
-      <Header />
-      <SideBar />
-      <Banner
-        text="A galeria mais completa de fotos do espaço!"
-        bannerImg={bannerImg}
-      />
+      <AppContainer>
+        <Header />
+        <MainContent>
+          <SideBar />
+          <GalleryContainer>
+            <Banner
+              text="A galeria mais completa de fotos do espaço!"
+              bannerImg={bannerImg}
+            />
+            <Gallery />
+          </GalleryContainer>
+        </MainContent>
+      </AppContainer>
     </BackgroundGradient>
   );
 }
