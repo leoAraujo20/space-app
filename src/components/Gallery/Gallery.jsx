@@ -1,6 +1,8 @@
+import Title from "../Title";
+
 function Gallery() {
   return (
-    <h2>Galeria</h2>
+    <Title>Navegue pela galeria!</Title>
   );
 }
 

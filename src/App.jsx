@@ -28,7 +28,7 @@ const MainContent = styled.main`
   gap: 24px;
 `;
 
-const GalleryContainer = styled.div`
+const GalleryContainer = styled.section`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
