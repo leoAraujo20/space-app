@@ -5,6 +5,8 @@ import SideBar from "./components/SideBar/SideBar";
 import Banner from "./components/Banner";
 import bannerImg from "../src/assets/banner.png";
 import Gallery from "./components/Gallery";
+import { useState } from "react";
+import photos from "./photos.json"
 
 const BackgroundGradient = styled.div`
   background: linear-gradient(
@@ -28,13 +30,15 @@ const MainContent = styled.main`
   gap: 24px;
 `;
 
-const GalleryContainer = styled.section`
+const GalleryContent = styled.section`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-`
+`;
 
 function App() {
+  const [photoList, setPhotoList] = useState(photos);
+
   return (
     <BackgroundGradient>
       <GlobalStyles />
@@ -42,13 +46,13 @@ function App() {
         <Header />
         <MainContent>
           <SideBar />
-          <GalleryContainer>
+          <GalleryContent>
             <Banner
               text="A galeria mais completa de fotos do espaço!"
               bannerImg={bannerImg}
             />
-            <Gallery />
-          </GalleryContainer>
+            <Gallery photos={photoList} />
+          </GalleryContent>
         </MainContent>
       </AppContainer>
     </BackgroundGradient>
