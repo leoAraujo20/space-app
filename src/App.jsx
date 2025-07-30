@@ -39,6 +39,16 @@ const GalleryContent = styled.section`
 function App() {
   const [photoList, setPhotoList] = useState(photos);
 
+  const HandleFavorite = (photoId) => {
+    const updatedPhotos = photoList.map(photo => {
+      if (photo.id === photoId) {
+        return { ...photo, isFavorite: !photo.isFavorite };
+      }
+      return photo;
+    });
+    setPhotoList(updatedPhotos);
+  }
+
   return (
     <BackgroundGradient>
       <GlobalStyles />
@@ -51,7 +61,7 @@ function App() {
               text="A galeria mais completa de fotos do espaço!"
               bannerImg={bannerImg}
             />
-            <Gallery photos={photoList} />
+            <Gallery photos={photoList} onFavorite={HandleFavorite} />
           </GalleryContent>
         </MainContent>
       </AppContainer>

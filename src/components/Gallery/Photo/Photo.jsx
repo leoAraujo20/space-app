@@ -52,6 +52,13 @@ const CaptionIcons = styled.span`
   align-items: center;
   gap: 12px;
 
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
   img {
     cursor: pointer;
     width: 16px;
@@ -59,7 +66,7 @@ const CaptionIcons = styled.span`
   }
 `;
 
-function Photo({ photo }) {
+function Photo({ photo, onFavorite }) {
   return (
     <Figure>
       <img src={photo.path} alt={photo.title} />
@@ -70,8 +77,16 @@ function Photo({ photo }) {
             <h4>{photo.source}</h4>
           </TitleSource>
           <CaptionIcons>
-            <img src="/icons/favorito.png" alt="Favoritar" />
-            <img src="/icons/expandir.png" alt="Expandir" />
+            <button onClick={() => onFavorite(photo.id)}>
+              {photo.isFavorite ? (
+                <img src="/icons/favorito-ativo.png" alt="Desfavoritar" />
+              ) : (
+                <img src="/icons/favorito.png" alt="Favoritar" />
+              )}
+            </button>
+            <button>
+              <img src="/icons/expandir.png" alt="Expandir" />
+            </button>
           </CaptionIcons>
         </CaptionHeader>
       </figcaption>
