@@ -56,7 +56,7 @@ const TitleSource = styled.div`
 const CaptionIcons = styled.span`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 32px;
 
   button {
     background: none;
