@@ -49,6 +49,11 @@ function App() {
       return photo;
     });
     setPhotoList(updatedPhotos);
+
+    if (photoExpanded && photoExpanded.id === photoId) {
+      const updatedPhoto = updatedPhotos.find((photo) => photo.id === photoId);
+      setPhotoExpanded(updatedPhoto);
+    }
   };
 
   const HandleExpand = (photo) => {
@@ -79,7 +84,11 @@ function App() {
           </GalleryContent>
         </MainContent>
       </AppContainer>
-      <PhotoModal photoExpanded={photoExpanded} onExpand={HandleExpand} onFavorite={HandleFavorite} />
+      <PhotoModal
+        photoExpanded={photoExpanded}
+        onExpand={HandleExpand}
+        onFavorite={HandleFavorite}
+      />
     </BackgroundGradient>
   );
 }
