@@ -14,6 +14,7 @@ const Figure = styled.figure`
 
   & > img {
     max-width: 100%;
+    cursor: pointer;
     border-radius: ${(props) =>
       props.$variant === "popular" ? "20px" : "20px 20px 0 0"};
   }
