@@ -21,13 +21,13 @@ const Dialog = styled.dialog`
   width: 1000px;
 `;
 
-function PhotoModal({ photoExpanded }) {
+function PhotoModal({ photoExpanded, onExpand, onFavorite }) {
   return (
     <>
       {photoExpanded && (
         <Overlay>
           <Dialog open={!!photoExpanded}>
-            <Photo photo={photoExpanded} isExpanded={true} />
+            <Photo photo={photoExpanded} isExpanded={true} onExpand={onExpand} onFavorite={onFavorite} />
           </Dialog>
         </Overlay>
       )}

@@ -15,13 +15,13 @@ const PopularContainer = styled.section`
   flex-direction: column;
 `;
 
-function SectionPopular() {
+function SectionPopular({ onExpand }) {
   return (
     <PopularContainer>
       <Title $align="center">Populares</Title>
       <PhotoGrid>
         {popularPhotos.map((photo) => (
-          <Photo key={photo.id} photo={photo} variant="popular" />
+          <Photo key={photo.id} photo={photo} variant="popular" onExpand={onExpand} />
         ))}
       </PhotoGrid>
     </PopularContainer>

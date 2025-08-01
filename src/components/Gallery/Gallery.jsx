@@ -31,7 +31,7 @@ function Gallery({ photos, onFavorite, onExpand }) {
             ))}
           </PhotoGrid>
         </SectionRecent>
-        <SectionPopular />
+        <SectionPopular onExpand={onExpand} />
       </GalleryContainer>
     </>
   );

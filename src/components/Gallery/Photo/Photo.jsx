@@ -81,7 +81,7 @@ function Photo({
 }) {
   return (
     <Figure $isExpanded={isExpanded} $variant={variant}>
-      <img src={photo.path} alt={photo.title} />
+      <img src={photo.path} alt={photo.title} onClick={() => onExpand(photo)}/>
       {variant === "default" && (
         <figcaption>
           <CaptionHeader>
@@ -97,7 +97,7 @@ function Photo({
                   <img src="/icons/favorito.png" alt="Favoritar" />
                 )}
               </button>
-              <button onClick={() => onExpand(photo.id)}>
+              <button onClick={() => onExpand(photo)}>
                 <img src="/icons/expandir.png" alt="Expandir" />
               </button>
             </CaptionIcons>
