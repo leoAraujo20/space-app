@@ -18,7 +18,7 @@ const PhotoGrid = styled.div`
   gap: 24px;
 `;
 
-function Gallery({ photos, onFavorite }) {
+function Gallery({ photos, onFavorite, onExpand }) {
   return (
     <>
       <Tags />
@@ -27,7 +27,7 @@ function Gallery({ photos, onFavorite }) {
           <Title>Navegue pela galeria!</Title>
           <PhotoGrid>
             {photos.map((photo) => (
-              <Photo key={photo.id} photo={photo} onFavorite={onFavorite} />
+              <Photo key={photo.id} photo={photo} onFavorite={onFavorite} onExpand={onExpand} />
             ))}
           </PhotoGrid>
         </SectionRecent>

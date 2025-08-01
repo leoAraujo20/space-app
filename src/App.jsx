@@ -6,7 +6,8 @@ import Banner from "./components/Banner";
 import bannerImg from "../src/assets/banner.png";
 import Gallery from "./components/Gallery";
 import { useState } from "react";
-import photos from "./photos.json"
+import photos from "./photos.json";
+import PhotoModal from "./components/PhotoModal";
 
 const BackgroundGradient = styled.div`
   background: linear-gradient(
@@ -38,16 +39,26 @@ const GalleryContent = styled.section`
 
 function App() {
   const [photoList, setPhotoList] = useState(photos);
+  const [photoExpanded, setPhotoExpanded] = useState(null);
 
   const HandleFavorite = (photoId) => {
-    const updatedPhotos = photoList.map(photo => {
+    const updatedPhotos = photoList.map((photo) => {
       if (photo.id === photoId) {
         return { ...photo, isFavorite: !photo.isFavorite };
       }
       return photo;
     });
     setPhotoList(updatedPhotos);
-  }
+  };
+
+  const HandleExpand = (photoId) => {
+    if (photoExpanded) {
+      setPhotoExpanded(null);
+      return;
+    }
+    const expandedPhoto = photoList.find((photo) => photo.id === photoId);
+    setPhotoExpanded(expandedPhoto);
+  };
 
   return (
     <BackgroundGradient>
@@ -61,10 +72,15 @@ function App() {
               text="A galeria mais completa de fotos do espaço!"
               bannerImg={bannerImg}
             />
-            <Gallery photos={photoList} onFavorite={HandleFavorite} />
+            <Gallery
+              photos={photoList}
+              onFavorite={HandleFavorite}
+              onExpand={HandleExpand}
+            />
           </GalleryContent>
         </MainContent>
       </AppContainer>
+      <PhotoModal photoExpanded={photoExpanded} />
     </BackgroundGradient>
   );
 }

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Figure = styled.figure`
-  width: ${(props) => (props.$expandida ? "90%" : "460px")};
+  width: ${(props) => (props.$isExpanded ? "90%" : "460px")};
   max-width: 100%;
   display: flex;
   flex-direction: column;
@@ -66,9 +66,9 @@ const CaptionIcons = styled.span`
   }
 `;
 
-function Photo({ photo, onFavorite }) {
+function Photo({ photo, onFavorite, onExpand, isExpanded = false }) {
   return (
-    <Figure>
+    <Figure $isExpanded={isExpanded}>
       <img src={photo.path} alt={photo.title} />
       <figcaption>
         <CaptionHeader>
@@ -84,7 +84,7 @@ function Photo({ photo, onFavorite }) {
                 <img src="/icons/favorito.png" alt="Favoritar" />
               )}
             </button>
-            <button>
+            <button onClick={() => onExpand(photo.id)}>
               <img src="/icons/expandir.png" alt="Expandir" />
             </button>
           </CaptionIcons>
