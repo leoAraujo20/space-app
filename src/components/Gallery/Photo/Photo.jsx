@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 const Figure = styled.figure`
-  width: ${(props) => (props.$isExpanded ? "90%" : "460px")};
+  width: ${(props) =>
+    props.$isExpanded
+      ? "90%"
+      : props.$variant === "popular"
+      ? "212px"
+      : "460px"};
   max-width: 100%;
   display: flex;
   flex-direction: column;
@@ -9,7 +14,8 @@ const Figure = styled.figure`
 
   & > img {
     max-width: 100%;
-    border-radius: 20px 20px 0 0;
+    border-radius: ${(props) =>
+      props.$variant === "popular" ? "20px" : "20px 20px 0 0"};
   }
 
   figcaption {
@@ -66,30 +72,38 @@ const CaptionIcons = styled.span`
   }
 `;
 
-function Photo({ photo, onFavorite, onExpand, isExpanded = false }) {
+function Photo({
+  photo,
+  onFavorite,
+  onExpand,
+  isExpanded = false,
+  variant = "default",
+}) {
   return (
-    <Figure $isExpanded={isExpanded}>
+    <Figure $isExpanded={isExpanded} $variant={variant}>
       <img src={photo.path} alt={photo.title} />
-      <figcaption>
-        <CaptionHeader>
-          <TitleSource>
-            <h3>{photo.title}</h3>
-            <h4>{photo.source}</h4>
-          </TitleSource>
-          <CaptionIcons>
-            <button onClick={() => onFavorite(photo.id)}>
-              {photo.isFavorite ? (
-                <img src="/icons/favorito-ativo.png" alt="Desfavoritar" />
-              ) : (
-                <img src="/icons/favorito.png" alt="Favoritar" />
-              )}
-            </button>
-            <button onClick={() => onExpand(photo.id)}>
-              <img src="/icons/expandir.png" alt="Expandir" />
-            </button>
-          </CaptionIcons>
-        </CaptionHeader>
-      </figcaption>
+      {variant === "default" && (
+        <figcaption>
+          <CaptionHeader>
+            <TitleSource>
+              <h3>{photo.title}</h3>
+              <h4>{photo.source}</h4>
+            </TitleSource>
+            <CaptionIcons>
+              <button onClick={() => onFavorite(photo.id)}>
+                {photo.isFavorite ? (
+                  <img src="/icons/favorito-ativo.png" alt="Desfavoritar" />
+                ) : (
+                  <img src="/icons/favorito.png" alt="Favoritar" />
+                )}
+              </button>
+              <button onClick={() => onExpand(photo.id)}>
+                <img src="/icons/expandir.png" alt="Expandir" />
+              </button>
+            </CaptionIcons>
+          </CaptionHeader>
+        </figcaption>
+      )}
     </Figure>
   );
 }
