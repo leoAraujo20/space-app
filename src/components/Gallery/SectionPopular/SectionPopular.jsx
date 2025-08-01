@@ -6,13 +6,11 @@ import Photo from "../Photo";
 const PhotoGrid = styled.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   gap: 24px;
 `;
 
 const PopularContainer = styled.section`
-  display: flex;
-  flex-direction: column;
+  flex-grow: 1;
 `;
 
 function SectionPopular({ onExpand }) {
