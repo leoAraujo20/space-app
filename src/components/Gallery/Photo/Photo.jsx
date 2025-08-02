@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Tag from "../../Tag";
 
 const Figure = styled.figure`
   width: ${(props) =>
@@ -11,12 +12,19 @@ const Figure = styled.figure`
   display: flex;
   flex-direction: column;
   margin: 0;
+  position: relative;
 
   & > img {
     max-width: 100%;
     cursor: pointer;
     border-radius: ${(props) =>
       props.$variant === "popular" ? "20px" : "20px 20px 0 0"};
+  }
+
+  & > button{
+    position: absolute;
+    top: 16px;
+    right: 16px; 
   }
 
   figcaption {
@@ -75,6 +83,7 @@ const CaptionIcons = styled.span`
 
 function Photo({
   photo,
+  tag,
   onFavorite,
   onExpand,
   isExpanded = false,
@@ -82,6 +91,9 @@ function Photo({
 }) {
   return (
     <Figure $isExpanded={isExpanded} $variant={variant}>
+      {variant === "default" && !isExpanded && (
+        <Tag>{tag.title}</Tag>
+      )}
       <img src={photo.path} alt={photo.title} onClick={() => onExpand(photo)}/>
       {variant === "default" && (
         <figcaption>

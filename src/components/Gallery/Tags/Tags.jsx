@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import tags from "./tags.json";
+import Tag from "../../Tag";
 
 const TagsWrapper = styled.div`
   display: flex;
@@ -21,21 +22,6 @@ const TagTitle = styled.h3`
 `
 ;
 
-const TagButton = styled.button`
-  font-size: 24px;
-  color: #ffffff;
-  background: rgba(217, 217, 217, 0.3);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  padding: 12px;
-  box-sizing: border-box;
-  border: 2px solid transparent;
-  
-  &:hover {
-    border-color: #c98cf1;
-  }
-`;
 
 function Tags() {
   return (
@@ -43,7 +29,7 @@ function Tags() {
       <TagTitle>Busque por tags:</TagTitle>
       <TagsContainer>
         {tags.map((tag) => (
-          <TagButton key={tag.id}>{tag.title}</TagButton>
+          <Tag key={tag.id}>{tag.title}</Tag>
         ))}
       </TagsContainer>
     </TagsWrapper>

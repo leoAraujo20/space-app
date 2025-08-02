@@ -3,6 +3,7 @@ import Title from "../Title";
 import Tags from "./Tags";
 import SectionPopular from "./SectionPopular";
 import Photo from "./Photo";
+import TagsList from "./Tags/tags.json";
 
 const GalleryContainer = styled.div`
   display: flex;
@@ -26,9 +27,12 @@ function Gallery({ photos, onFavorite, onExpand }) {
         <SectionRecent>
           <Title>Navegue pela galeria!</Title>
           <PhotoGrid>
-            {photos.map((photo) => (
-              <Photo key={photo.id} photo={photo} onFavorite={onFavorite} onExpand={onExpand} />
-            ))}
+            {photos.map((photo) => {
+              const tag = TagsList.find((tag) => tag.id === photo.tagId);
+              return (
+                <Photo key={photo.id} photo={photo} onFavorite={onFavorite} onExpand={onExpand} tag={tag} />
+              );
+            })}
           </PhotoGrid>
         </SectionRecent>
         <SectionPopular onExpand={onExpand} />
