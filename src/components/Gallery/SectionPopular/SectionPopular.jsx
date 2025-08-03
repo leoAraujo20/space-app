@@ -6,6 +6,9 @@ import Button from "../../Button";
 
 const PopularContainer = styled.section`
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const PhotoGrid = styled.div`
