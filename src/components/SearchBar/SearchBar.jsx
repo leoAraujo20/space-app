@@ -30,10 +30,14 @@ const IconSearch = styled.img`
   height: 38px;
 `;
 
-function SearchBar() {
+function SearchBar({ onSearchQueryChange }) {
   return (
     <SearchContainer>
-      <SearchBarStyled type="text" placeholder="Pesquisar..." />
+      <SearchBarStyled
+        type="text"
+        placeholder="Pesquisar..."
+        onChange={(event) => onSearchQueryChange(event)}
+      />
       <IconSearch src="/icons/search.png" alt="Icone de uma lupa" />
     </SearchContainer>
   );

@@ -12,11 +12,11 @@ const StyledHeader = styled.header`
   }
 `;
 
-function Header() {
+function Header({ onSearchQueryChange }) {
   return (
     <StyledHeader>
       <img src="/images/logo.png" alt="Space App Logo" />
-      <SearchBar />
+      <SearchBar onSearchQueryChange={onSearchQueryChange} />
     </StyledHeader>
   );
 }

@@ -42,13 +42,16 @@ function App() {
   const [photoList, setPhotoList] = useState(photos);
   const [photoExpanded, setPhotoExpanded] = useState(null);
   const [selectedTag, setSelectedTag] = useState(tags[0]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredPhotos = selectedTag.id === 0
-    ? photoList
-    : photoList.filter((photo) => photo.tagId === selectedTag.id);
+  const FilteredPhotos = photoList.filter((photo) => {
+    const matchesTag = selectedTag.id === 0 || photo.tagId === selectedTag.id;
+    const matchesSearch = photo.title.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesTag && matchesSearch;
+  });
 
   const HandleFavorite = (photoId) => {
-    const updatedPhotos = filteredPhotos.map((photo) => {
+    const updatedPhotos = photoList.map((photo) => {
       if (photo.id === photoId) {
         return { ...photo, isFavorite: !photo.isFavorite };
       }
@@ -70,11 +73,16 @@ function App() {
     setPhotoExpanded(photo);
   };
 
+  const handleSearchQueryChange = (event) => {
+    setSearchQuery(event.target.value);
+  }
+
+
   return (
     <BackgroundGradient>
       <GlobalStyles />
       <AppContainer>
-        <Header />
+        <Header onSearchQueryChange={handleSearchQueryChange} />
         <MainContent>
           <SideBar />
           <GalleryContent>
@@ -83,7 +91,7 @@ function App() {
               bannerImg={bannerImg}
             />
             <Gallery
-              photos={filteredPhotos}
+              photos={FilteredPhotos}
               onFavorite={HandleFavorite}
               onExpand={HandleExpand}
               onTagSelect={setSelectedTag}
