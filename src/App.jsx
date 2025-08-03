@@ -41,6 +41,12 @@ function App() {
   const [photoList, setPhotoList] = useState(photos);
   const [photoExpanded, setPhotoExpanded] = useState(null);
 
+  const HandleTagSelection = (tag) => {
+    tag.id === 0
+      ? setPhotoList(photos)
+      : setPhotoList(photos.filter((photo) => photo.tagId === tag.id));
+  };
+
   const HandleFavorite = (photoId) => {
     const updatedPhotos = photoList.map((photo) => {
       if (photo.id === photoId) {
@@ -80,6 +86,7 @@ function App() {
               photos={photoList}
               onFavorite={HandleFavorite}
               onExpand={HandleExpand}
+              onSelectTag={HandleTagSelection}
             />
           </GalleryContent>
         </MainContent>

@@ -16,8 +16,8 @@ const TagButton = styled.button`
   }
 `;
 
-function Tag({ children }) {
-    return <TagButton>{children}</TagButton>;
+function Tag({ children, onClick }) {
+    return <TagButton onClick={onClick}>{children}</TagButton>;
 }
 
 export default Tag;
