@@ -19,10 +19,10 @@ const PhotoGrid = styled.div`
   gap: 24px;
 `;
 
-function Gallery({ photos, onFavorite, onExpand, onSelectTag }) {
+function Gallery({ photos, onFavorite, onExpand, onTagSelect }) {
   return (
     <>
-      <Tags onSelectTag={onSelectTag} />
+      <Tags onTagSelect={onTagSelect} />
       <GalleryContainer>
         <SectionRecent>
           <Title>Navegue pela galeria!</Title>

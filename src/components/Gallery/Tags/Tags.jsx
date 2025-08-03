@@ -23,13 +23,15 @@ const TagTitle = styled.h3`
 ;
 
 
-function Tags({ onSelectTag }) {
+function Tags({ onTagSelect }) {
   return (
     <TagsWrapper>
       <TagTitle>Busque por tags:</TagTitle>
       <TagsContainer>
         {tags.map((tag) => (
-          <Tag key={tag.id} onClick={() => onSelectTag(tag)}>{tag.title}</Tag>
+          <Tag key={tag.id} onTagSelect={() => onTagSelect(tag)}>
+            {tag.title}
+          </Tag>
         ))}
       </TagsContainer>
     </TagsWrapper>

@@ -7,6 +7,7 @@ import bannerImg from "../src/assets/banner.png";
 import Gallery from "./components/Gallery";
 import { useState } from "react";
 import photos from "./photos.json";
+import tags from "./components/Gallery/Tags/tags.json";
 import PhotoModal from "./components/PhotoModal";
 
 const BackgroundGradient = styled.div`
@@ -40,15 +41,14 @@ const GalleryContent = styled.section`
 function App() {
   const [photoList, setPhotoList] = useState(photos);
   const [photoExpanded, setPhotoExpanded] = useState(null);
+  const [selectedTag, setSelectedTag] = useState(tags[0]);
 
-  const HandleTagSelection = (tag) => {
-    tag.id === 0
-      ? setPhotoList(photos)
-      : setPhotoList(photos.filter((photo) => photo.tagId === tag.id));
-  };
+  const filteredPhotos = selectedTag.id === 0
+    ? photoList
+    : photoList.filter((photo) => photo.tagId === selectedTag.id);
 
   const HandleFavorite = (photoId) => {
-    const updatedPhotos = photoList.map((photo) => {
+    const updatedPhotos = filteredPhotos.map((photo) => {
       if (photo.id === photoId) {
         return { ...photo, isFavorite: !photo.isFavorite };
       }
@@ -83,10 +83,10 @@ function App() {
               bannerImg={bannerImg}
             />
             <Gallery
-              photos={photoList}
+              photos={filteredPhotos}
               onFavorite={HandleFavorite}
               onExpand={HandleExpand}
-              onSelectTag={HandleTagSelection}
+              onTagSelect={setSelectedTag}
             />
           </GalleryContent>
         </MainContent>
