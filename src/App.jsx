@@ -9,6 +9,7 @@ import { useState } from "react";
 import photos from "./photos.json";
 import tags from "./components/Gallery/Tags/tags.json";
 import PhotoModal from "./components/PhotoModal";
+import Footer from "./components/Footer";
 
 const BackgroundGradient = styled.div`
   background: linear-gradient(
@@ -99,6 +100,7 @@ function App() {
           </GalleryContent>
         </MainContent>
       </AppContainer>
+      <Footer />
       <PhotoModal
         photoExpanded={photoExpanded}
         onExpand={HandleExpand}
