@@ -1,12 +1,38 @@
-# React + Vite
+# Space App 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma galeria completa de fotos espaciais desenvolvida com React e Vite.
 
-Currently, two official plugins are available:
+## 🌟 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Galeria de Fotos**: Navegue por uma coleção de imagens espaciais organizadas
+- **Sistema de Tags**: Filtre fotos por categorias (Estrelas, Galáxias, Luas, Nebulosas)
+- **Busca**: Pesquise fotos por título
+- **Favoritos**: Marque suas fotos favoritas
+- **Modal Expandido**: Visualize fotos em tamanho ampliado
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologias Utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React](https://reactjs.org/) - Biblioteca para construção da interface
+- [Vite](https://vitejs.dev/) - Ferramenta de build rápida
+- [Styled Components](https://styled-components.com/) - Estilização com CSS-in-JS
+- [ESLint](https://eslint.org/) - Linting de código
+
+## 🚀 Como Executar
+
+1. Clone o repositório:
+```bash
+git clone [url-do-repositorio]
+cd space-app
+```
+
+2. Instale as dependências:
+```bash
+npm install
+```
+
+3. Execute o projeto em modo de desenvolvimento:
+```bash
+npm run dev
+```
+
+4. Abra [http://localhost:5173](http://localhost:5173) no seu navegador
